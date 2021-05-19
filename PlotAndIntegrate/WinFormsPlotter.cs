@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace PlotAndIntegrate
 {
@@ -7,6 +8,7 @@ namespace PlotAndIntegrate
         const float ArrowLength = 16f;
         const float ArrowHeight = 8f;
         private readonly Font font = new(FontFamily.GenericMonospace, 12f, FontStyle.Bold);
+        public float Unit { get; set; } = 1f;
 
         public Point CenterPoint { get; set; }
 
@@ -23,6 +25,11 @@ namespace PlotAndIntegrate
             {
                 graphics.DrawLine(Pens.Black, new PointF(i, 0), new PointF(i, height));
             }
+        }
+
+        public PointF GetCoordsAtPoint(Point point, float pixelsPerUnit)
+        {
+            return new PointF((point.X - CenterPoint.X) / pixelsPerUnit * Unit, (CenterPoint.Y - point.Y) / pixelsPerUnit * Unit);
         }
 
         public void DrawAxes(Graphics graphics, int width, int height)

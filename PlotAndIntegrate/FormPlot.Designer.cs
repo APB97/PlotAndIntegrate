@@ -30,6 +30,7 @@ namespace PlotAndIntegrate
         private void InitializeComponent()
         {
             this.pictureBoxPlot = new System.Windows.Forms.PictureBox();
+            this.textBoxCoordinates = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,23 +45,35 @@ namespace PlotAndIntegrate
             this.pictureBoxPlot.TabIndex = 0;
             this.pictureBoxPlot.TabStop = false;
             this.pictureBoxPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxPlot_Paint);
+            this.pictureBoxPlot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseMove);
+            // 
+            // textBoxCoordinates
+            // 
+            this.textBoxCoordinates.Location = new System.Drawing.Point(12, 269);
+            this.textBoxCoordinates.Name = "textBoxCoordinates";
+            this.textBoxCoordinates.ReadOnly = true;
+            this.textBoxCoordinates.Size = new System.Drawing.Size(250, 23);
+            this.textBoxCoordinates.TabIndex = 1;
             // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxCoordinates);
             this.Controls.Add(this.pictureBoxPlot);
             this.Name = "FormPlot";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxPlot;
+        private System.Windows.Forms.TextBox textBoxCoordinates;
     }
 }
 

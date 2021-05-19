@@ -25,5 +25,11 @@ namespace PlotAndIntegrate
             plotter.DrawAxes(graphics, width, height);
             pictureBoxPlot.Invalidate();
         }
+
+        private void PictureBoxPlot_MouseMove(object sender, MouseEventArgs e)
+        {
+            var p = e.Location;
+            textBoxCoordinates.Text = plotter.GetCoordsAtPoint(p, 10).ToString();
+        }
     }
 }
