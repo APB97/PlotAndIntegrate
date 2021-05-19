@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".gitattributes" />
+    <None Remove=".gitignore" />
+    <None Remove="LICENSE" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\APB97.Math\APB97.Math.csproj" />
   </ItemGroup>
 
