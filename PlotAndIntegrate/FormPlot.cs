@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace PlotAndIntegrate
 {
     public partial class FormPlot : Form
     {
+        readonly WinFormsPlotter plotter = new();
+
         public FormPlot()
         {
             InitializeComponent();
+            plotter.CenterPoint = new(45, 42);
         }
 
-        private void pictureBoxPlot_Paint(object sender, PaintEventArgs e)
+        private void PictureBoxPlot_Paint(object sender, PaintEventArgs e)
         {
             var graphics = e.Graphics;
             var clipRectangle = e.ClipRectangle;
@@ -25,17 +21,9 @@ namespace PlotAndIntegrate
             var height = clipRectangle.Height;
 
             graphics.Clear(Color.White);
-            DrawGrid(graphics, width, height, 10f);
+            plotter.DrawGrid(graphics, width, height, 10);
+            plotter.DrawAxes(graphics, width, height);
             pictureBoxPlot.Invalidate();
-        }
-
-        private void DrawGrid(Graphics graphics, int width, int height, float pixelsPerUnit)
-        {
-            for (float i = pixelsPerUnit; i < width || i < height; i += pixelsPerUnit)
-            {
-                graphics.DrawLine(Pens.Black, new PointF(0, i), new PointF(width, i));
-                graphics.DrawLine(Pens.Black, new PointF(i, 0), new PointF(i, height));
-            }
         }
     }
 }

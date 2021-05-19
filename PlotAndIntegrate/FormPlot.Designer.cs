@@ -43,7 +43,7 @@ namespace PlotAndIntegrate
             this.pictureBoxPlot.Size = new System.Drawing.Size(250, 250);
             this.pictureBoxPlot.TabIndex = 0;
             this.pictureBoxPlot.TabStop = false;
-            this.pictureBoxPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxPlot_Paint);
+            this.pictureBoxPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxPlot_Paint);
             // 
             // FormPlot
             // 
