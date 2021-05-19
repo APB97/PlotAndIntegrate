@@ -2,7 +2,7 @@
 {
     public interface IFunction
     {
-        bool IsValueOfXCorrect(double x);
-        double Y(double x);
+        bool IsValueOfXCorrect(float x);
+        float Y(float x);
     }
 }

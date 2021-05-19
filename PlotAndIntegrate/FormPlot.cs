@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using APB97.Math;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PlotAndIntegrate
@@ -6,6 +7,8 @@ namespace PlotAndIntegrate
     public partial class FormPlot : Form
     {
         readonly WinFormsPlotter plotter = new();
+
+        IFunction function = new PolynomialFunction(1, -2, 1, -4);
 
         public FormPlot()
         {
@@ -21,15 +24,17 @@ namespace PlotAndIntegrate
             var height = clipRectangle.Height;
 
             graphics.Clear(Color.White);
-            plotter.DrawGrid(graphics, width, height, 10);
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            plotter.DrawGrid(graphics, width, height);
             plotter.DrawAxes(graphics, width, height);
+            plotter.DrawPlot(graphics, function, width);
             pictureBoxPlot.Invalidate();
         }
 
         private void PictureBoxPlot_MouseMove(object sender, MouseEventArgs e)
         {
             var p = e.Location;
-            textBoxCoordinates.Text = plotter.GetCoordsAtPoint(p, 10).ToString();
+            textBoxCoordinates.Text = plotter.GetCoordsAtPoint(p).ToString();
         }
     }
 }

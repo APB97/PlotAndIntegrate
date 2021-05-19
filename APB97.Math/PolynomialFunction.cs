@@ -2,27 +2,27 @@
 {
     public class PolynomialFunction : IFunction
     {
-        public PolynomialFunction(params double[] coefficients)
+        public PolynomialFunction(params float[] coefficients)
         {
             Coefficients = coefficients;
         }
 
-        public double[] Coefficients { get; }
+        public float[] Coefficients { get; }
 
-        public double Y(double x)
+        public float Y(float x)
         {
             return Horner(x, Coefficients);
         }
 
-        private static double Horner(double x, double[] coefficients)
+        private static float Horner(float x, float[] coefficients)
         {
-            double s = 0;
-            foreach (double coefficient in coefficients)
+            float s = 0;
+            foreach (float coefficient in coefficients)
                 s = s * x + coefficient;
             return s;
         }
 
-        public bool IsValueOfXCorrect(double x)
+        public bool IsValueOfXCorrect(float x)
         {
             return true;
         }

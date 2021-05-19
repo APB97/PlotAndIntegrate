@@ -49,6 +49,7 @@ namespace PlotAndIntegrate
             // 
             // textBoxCoordinates
             // 
+            this.textBoxCoordinates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCoordinates.Location = new System.Drawing.Point(12, 269);
             this.textBoxCoordinates.Name = "textBoxCoordinates";
             this.textBoxCoordinates.ReadOnly = true;
