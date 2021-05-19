@@ -31,6 +31,8 @@ namespace PlotAndIntegrate
         {
             this.pictureBoxPlot = new System.Windows.Forms.PictureBox();
             this.textBoxCoordinates = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxUnit = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,23 +46,43 @@ namespace PlotAndIntegrate
             this.pictureBoxPlot.Size = new System.Drawing.Size(250, 250);
             this.pictureBoxPlot.TabIndex = 0;
             this.pictureBoxPlot.TabStop = false;
+            this.pictureBoxPlot.SizeChanged += new System.EventHandler(this.PictureBoxPlot_SizeChanged);
             this.pictureBoxPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxPlot_Paint);
             this.pictureBoxPlot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseMove);
             // 
             // textBoxCoordinates
             // 
-            this.textBoxCoordinates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCoordinates.Location = new System.Drawing.Point(12, 269);
             this.textBoxCoordinates.Name = "textBoxCoordinates";
             this.textBoxCoordinates.ReadOnly = true;
             this.textBoxCoordinates.Size = new System.Drawing.Size(250, 23);
             this.textBoxCoordinates.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 299);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Unit";
+            // 
+            // textBoxUnit
+            // 
+            this.textBoxUnit.Location = new System.Drawing.Point(47, 296);
+            this.textBoxUnit.Name = "textBoxUnit";
+            this.textBoxUnit.Size = new System.Drawing.Size(215, 23);
+            this.textBoxUnit.TabIndex = 3;
+            this.textBoxUnit.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxUnit_Validating);
+            this.textBoxUnit.Validated += new System.EventHandler(this.TextBoxUnit_Validated);
+            // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxUnit);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxCoordinates);
             this.Controls.Add(this.pictureBoxPlot);
             this.Name = "FormPlot";
@@ -75,6 +97,8 @@ namespace PlotAndIntegrate
 
         private System.Windows.Forms.PictureBox pictureBoxPlot;
         private System.Windows.Forms.TextBox textBoxCoordinates;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxUnit;
     }
 }
 

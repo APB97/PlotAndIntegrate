@@ -1,4 +1,5 @@
 ﻿using APB97.Math;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -33,8 +34,33 @@ namespace PlotAndIntegrate
 
         private void PictureBoxPlot_MouseMove(object sender, MouseEventArgs e)
         {
-            var p = e.Location;
-            textBoxCoordinates.Text = plotter.GetCoordsAtPoint(p).ToString();
+            DisplayCoordinates(e.Location);
+        }
+
+        private void DisplayCoordinates(Point point)
+        {
+            textBoxCoordinates.Text = plotter.GetCoordsAtPoint(point).ToString();
+        }
+
+        private void PictureBoxPlot_SizeChanged(object sender, EventArgs e)
+        {
+            SyncWidth(textBoxCoordinates, pictureBoxPlot);
+        }
+
+        private static void SyncWidth(Control target, Control source)
+        {
+            target.Width = source.Width;
+        }
+
+        private void TextBoxUnit_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!float.TryParse(textBoxUnit.Text, out float given) || given is <= 0)
+                e.Cancel = true;
+        }
+
+        private void TextBoxUnit_Validated(object sender, EventArgs e)
+        {
+            plotter.Unit = float.Parse(textBoxUnit.Text);
         }
     }
 }
