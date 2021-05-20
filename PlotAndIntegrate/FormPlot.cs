@@ -1,6 +1,7 @@
 ﻿using APB97.Math;
 using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace PlotAndIntegrate
@@ -15,6 +16,7 @@ namespace PlotAndIntegrate
         {
             InitializeComponent();
             plotter.CenterPoint = new(45, 42);
+            textBoxUnit.Text = plotter.Unit.ToString();
         }
 
         private void PictureBoxPlot_Paint(object sender, PaintEventArgs e)
@@ -61,6 +63,17 @@ namespace PlotAndIntegrate
         private void TextBoxUnit_Validated(object sender, EventArgs e)
         {
             plotter.Unit = float.Parse(textBoxUnit.Text);
+        }
+
+        private void ButtonSaveAsImage_Click(object sender, EventArgs e)
+        {
+            using SaveFileDialog saveFileDialog = new() { Filter = "PNG files|*.png", OverwritePrompt = false };
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap bitmap = new(pictureBoxPlot.Width, pictureBoxPlot.Height);
+                pictureBoxPlot.DrawToBitmap(bitmap, new Rectangle(0, 0, Width, Height));
+                bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
+            }
         }
     }
 }

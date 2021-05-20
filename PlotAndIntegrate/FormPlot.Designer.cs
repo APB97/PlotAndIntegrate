@@ -33,6 +33,7 @@ namespace PlotAndIntegrate
             this.textBoxCoordinates = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxUnit = new System.Windows.Forms.TextBox();
+            this.buttonSaveAsImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +77,22 @@ namespace PlotAndIntegrate
             this.textBoxUnit.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxUnit_Validating);
             this.textBoxUnit.Validated += new System.EventHandler(this.TextBoxUnit_Validated);
             // 
+            // buttonSaveAsImage
+            // 
+            this.buttonSaveAsImage.Location = new System.Drawing.Point(12, 325);
+            this.buttonSaveAsImage.Name = "buttonSaveAsImage";
+            this.buttonSaveAsImage.Size = new System.Drawing.Size(250, 23);
+            this.buttonSaveAsImage.TabIndex = 4;
+            this.buttonSaveAsImage.Text = "Save as image...";
+            this.buttonSaveAsImage.UseVisualStyleBackColor = true;
+            this.buttonSaveAsImage.Click += new System.EventHandler(this.ButtonSaveAsImage_Click);
+            // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSaveAsImage);
             this.Controls.Add(this.textBoxUnit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxCoordinates);
@@ -99,6 +111,7 @@ namespace PlotAndIntegrate
         private System.Windows.Forms.TextBox textBoxCoordinates;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxUnit;
+        private System.Windows.Forms.Button buttonSaveAsImage;
     }
 }
 
