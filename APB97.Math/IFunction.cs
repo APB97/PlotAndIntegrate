@@ -1,8 +1,11 @@
-﻿namespace APB97.Math
+﻿using System;
+
+namespace APB97.Math
 {
-    public interface IFunction
+    public interface IFunction : ICloneable
     {
         bool IsValueOfXCorrect(float x);
         float Y(float x);
+        bool TryPassParameters(string[] splitBySpace);
     }
 }

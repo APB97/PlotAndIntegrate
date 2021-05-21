@@ -34,6 +34,7 @@ namespace PlotAndIntegrate
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxUnit = new System.Windows.Forms.TextBox();
             this.buttonSaveAsImage = new System.Windows.Forms.Button();
+            this.buttonPickNewOne = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,11 +88,22 @@ namespace PlotAndIntegrate
             this.buttonSaveAsImage.UseVisualStyleBackColor = true;
             this.buttonSaveAsImage.Click += new System.EventHandler(this.ButtonSaveAsImage_Click);
             // 
+            // buttonPickNewOne
+            // 
+            this.buttonPickNewOne.Location = new System.Drawing.Point(12, 354);
+            this.buttonPickNewOne.Name = "buttonPickNewOne";
+            this.buttonPickNewOne.Size = new System.Drawing.Size(250, 23);
+            this.buttonPickNewOne.TabIndex = 5;
+            this.buttonPickNewOne.Text = "Pick new function";
+            this.buttonPickNewOne.UseVisualStyleBackColor = true;
+            this.buttonPickNewOne.Click += new System.EventHandler(this.ButtonPickNewOne_Click);
+            // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonPickNewOne);
             this.Controls.Add(this.buttonSaveAsImage);
             this.Controls.Add(this.textBoxUnit);
             this.Controls.Add(this.label1);
@@ -112,6 +124,7 @@ namespace PlotAndIntegrate
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxUnit;
         private System.Windows.Forms.Button buttonSaveAsImage;
+        private System.Windows.Forms.Button buttonPickNewOne;
     }
 }
 

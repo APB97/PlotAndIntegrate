@@ -59,14 +59,26 @@ namespace PlotAndIntegrate
             float xMin = GetCoordsAtPoint(new Point(0, 0)).X;
             float XMax = GetCoordsAtPoint(new Point(width, 0)).X;
 
-            var p = new PointF(xMin, function.Y(xMin));
+            PointF? p = null;
+            if (function.IsValueOfXCorrect(xMin))
+                p = new PointF(xMin, function.Y(xMin));
             float step = Unit / PixelsPerUnit;
             for (float x = xMin + step; x <= XMax; x += step)
             {
-                var pNext = GetPoint(x, function.Y(x));
-                graphics.DrawLine(Pens.Blue, p, pNext);
-                p = pNext;
+                p = TryConnectNextPoint(graphics, function, p, x);
             }
+        }
+
+        private PointF? TryConnectNextPoint(Graphics graphics, IFunction function, PointF? currentPoint, float x)
+        {
+            if (function.IsValueOfXCorrect(x))
+            {
+                PointF nextPoint = GetPoint(x, function.Y(x));
+                if (currentPoint.HasValue)
+                    graphics.DrawLine(Pens.Blue, currentPoint.Value, nextPoint);
+                return nextPoint;
+            }
+            return null;
         }
     }
 }

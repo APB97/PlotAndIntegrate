@@ -4,12 +4,20 @@ namespace APB97.Math
 {
     public class LogarithmicFunction : IFunction
     {
-        public float LogarithmBase { get; }
+        private float logarithmBase = 2;
+
+        public float LogarithmBase
+        {
+            get => logarithmBase;
+            set
+            {
+                if (logarithmBase is > 0 and not 1)
+                    logarithmBase = value;
+            }
+        }
 
         public LogarithmicFunction(float logarithmBase)
         {
-            if (logarithmBase is not > 0 or 1)
-                throw new ArgumentOutOfRangeException(nameof(logarithmBase), "Logarithm's base mut be a postitive number other than 1");
             LogarithmBase = logarithmBase;
         }
 
@@ -23,6 +31,24 @@ namespace APB97.Math
         public bool IsValueOfXCorrect(float x)
         {
             return x is > 0;
+        }
+
+        public override string ToString()
+        {
+            return nameof(LogarithmicFunction);
+        }
+
+        public object Clone()
+        {
+            return new LogarithmicFunction(LogarithmBase);
+        }
+
+        public bool TryPassParameters(string[] splitBySpace)
+        {
+            if (splitBySpace.Length is not 1 || !float.TryParse(splitBySpace[0], out float param))
+                return false;
+            LogarithmBase = param;
+            return true;
         }
     }
 }

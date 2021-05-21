@@ -75,5 +75,15 @@ namespace PlotAndIntegrate
                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
             }
         }
+
+        private void ButtonPickNewOne_Click(object sender, EventArgs e)
+        {
+            FormFunctionPicker picker = new();
+            if (picker.ShowDialog() == DialogResult.OK)
+            {
+                function = picker.SelectedFunction;
+                pictureBoxPlot.Invalidate();
+            }
+        }
     }
 }
