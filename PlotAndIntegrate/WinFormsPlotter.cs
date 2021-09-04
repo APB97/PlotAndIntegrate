@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace PlotAndIntegrate
 {
-    public class WinFormsPlotter
+    public class WinFormsPlotter : IWinFormsPlotter
     {
         const float ArrowLength = 16f;
         const float ArrowHeight = 8f;
@@ -46,7 +46,7 @@ namespace PlotAndIntegrate
 
             graphics.DrawLine(ThickerPen, new PointF(0, y), new PointF(width, y));
             graphics.DrawLine(ThickerPen, new PointF(x, 0), new PointF(x, height));
-            
+
             graphics.FillPolygon(Brushes.Black, new PointF[] { new PointF(width, y), new PointF(width - ArrowLength, y + ArrowHeight), new PointF(width - ArrowLength, y - ArrowHeight) });
             graphics.FillPolygon(Brushes.Black, new PointF[] { new PointF(x, height), new PointF(x + ArrowHeight, height - ArrowLength), new PointF(x - ArrowHeight, height - ArrowLength) });
 

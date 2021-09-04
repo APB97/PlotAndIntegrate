@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PlotAndIntegrate
@@ -17,7 +14,7 @@ namespace PlotAndIntegrate
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPlot());
+            Application.Run(new FormPlot(new ControlToBitmap(), new WinFormsPlotter()));
         }
     }
 }

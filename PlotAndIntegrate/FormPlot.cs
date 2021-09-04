@@ -8,15 +8,18 @@ namespace PlotAndIntegrate
 {
     public partial class FormPlot : Form
     {
-        readonly WinFormsPlotter plotter = new();
-
+        private readonly IWinFormsPlotter plotter;
+        private readonly IControlToBitmap controlToBitmap;
         IFunction function = new PolynomialFunction(1, -2, 1, -4);
 
-        public FormPlot()
+        public FormPlot(IControlToBitmap controlToBitmap, IWinFormsPlotter plotter)
         {
             InitializeComponent();
-            plotter.CenterPoint = new(45, 42);
-            textBoxUnit.Text = plotter.Unit.ToString();
+            this.controlToBitmap = controlToBitmap;
+            this.controlToBitmap.ControlToSaveBitmapFor = pictureBoxPlot;
+            this.plotter = plotter;
+            this.plotter.CenterPoint = new(45, 42);
+            textBoxUnit.Text = this.plotter.Unit.ToString();
         }
 
         private void PictureBoxPlot_Paint(object sender, PaintEventArgs e)
@@ -74,19 +77,12 @@ namespace PlotAndIntegrate
         {
             using SaveFileDialog saveFileDialog = new() { Filter = "PNG files|*.png", OverwritePrompt = false };
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                SaveToLocation(pictureBoxPlot, saveFileDialog.FileName);
-        }
-
-        private static void SaveToLocation(Control control, string location)
-        {
-            Bitmap bitmap = new(control.Width, control.Height);
-            control.DrawToBitmap(bitmap, new Rectangle(0, 0, control.Width, control.Height));
-            bitmap.Save(location, ImageFormat.Png);
+                controlToBitmap.SaveToLocation(saveFileDialog.FileName, ImageFormat.Png);
         }
 
         private void ButtonPickNewOne_Click(object sender, EventArgs e)
         {
-            FormFunctionPicker picker = new();
+            using FormFunctionPicker picker = new();
             if (picker.ShowDialog() == DialogResult.OK)
             {
                 function = picker.SelectedFunction;
