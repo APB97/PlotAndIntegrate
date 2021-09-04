@@ -110,7 +110,7 @@ namespace PlotAndIntegrate
             this.Controls.Add(this.textBoxCoordinates);
             this.Controls.Add(this.pictureBoxPlot);
             this.Name = "FormPlot";
-            this.Text = "Form1";
+            this.Text = "Plot";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

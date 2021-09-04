@@ -94,7 +94,7 @@ namespace PlotAndIntegrate
             this.Controls.Add(this.buttonCreateNew);
             this.Controls.Add(this.comboBoxType);
             this.Name = "FormFunctionPicker";
-            this.Text = "FormFunctionPicker";
+            this.Text = "Pick a function";
             this.Load += new System.EventHandler(this.FormFunctionPicker_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
