@@ -67,13 +67,21 @@ namespace PlotAndIntegrate
 
         private void ButtonSaveAsImage_Click(object sender, EventArgs e)
         {
+            PromptForSaveLocation();
+        }
+
+        private void PromptForSaveLocation()
+        {
             using SaveFileDialog saveFileDialog = new() { Filter = "PNG files|*.png", OverwritePrompt = false };
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                Bitmap bitmap = new(pictureBoxPlot.Width, pictureBoxPlot.Height);
-                pictureBoxPlot.DrawToBitmap(bitmap, new Rectangle(0, 0, Width, Height));
-                bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
-            }
+                SaveToLocation(pictureBoxPlot, saveFileDialog.FileName);
+        }
+
+        private static void SaveToLocation(Control control, string location)
+        {
+            Bitmap bitmap = new(control.Width, control.Height);
+            control.DrawToBitmap(bitmap, new Rectangle(0, 0, control.Width, control.Height));
+            bitmap.Save(location, ImageFormat.Png);
         }
 
         private void ButtonPickNewOne_Click(object sender, EventArgs e)
