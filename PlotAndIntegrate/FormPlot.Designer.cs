@@ -35,7 +35,10 @@ namespace PlotAndIntegrate
             this.textBoxUnit = new System.Windows.Forms.TextBox();
             this.buttonSaveAsImage = new System.Windows.Forms.Button();
             this.buttonPickNewOne = new System.Windows.Forms.Button();
+            this.numericFontSize = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFontSize)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxPlot
@@ -98,11 +101,45 @@ namespace PlotAndIntegrate
             this.buttonPickNewOne.UseVisualStyleBackColor = true;
             this.buttonPickNewOne.Click += new System.EventHandler(this.ButtonPickNewOne_Click);
             // 
+            // numericFontSize
+            // 
+            this.numericFontSize.Location = new System.Drawing.Point(327, 12);
+            this.numericFontSize.Maximum = new decimal(new int[] {
+            36,
+            0,
+            0,
+            0});
+            this.numericFontSize.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericFontSize.Name = "numericFontSize";
+            this.numericFontSize.Size = new System.Drawing.Size(46, 23);
+            this.numericFontSize.TabIndex = 6;
+            this.numericFontSize.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericFontSize.ValueChanged += new System.EventHandler(this.NumericFontSize_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(268, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Font size";
+            // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.numericFontSize);
             this.Controls.Add(this.buttonPickNewOne);
             this.Controls.Add(this.buttonSaveAsImage);
             this.Controls.Add(this.textBoxUnit);
@@ -112,6 +149,7 @@ namespace PlotAndIntegrate
             this.Name = "FormPlot";
             this.Text = "Plot";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFontSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,6 +163,8 @@ namespace PlotAndIntegrate
         private System.Windows.Forms.TextBox textBoxUnit;
         private System.Windows.Forms.Button buttonSaveAsImage;
         private System.Windows.Forms.Button buttonPickNewOne;
+        private System.Windows.Forms.NumericUpDown numericFontSize;
+        private System.Windows.Forms.Label label2;
     }
 }
 

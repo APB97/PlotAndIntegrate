@@ -5,10 +5,13 @@ namespace PlotAndIntegrate
 {
     public class WinFormsPlotter : IWinFormsPlotter
     {
-        const float ArrowLength = 16f;
-        const float ArrowHeight = 8f;
-        private readonly Font font = new(FontFamily.GenericMonospace, 12f, FontStyle.Bold);
+        private const float ArrowLength = 16f;
+        private const float ArrowHeight = 8f;
+        private const float DefaultFontSize = 16f;
+        private Font _font = new(FontFamily.GenericSansSerif, DefaultFontSize);
 
+        public float FontSizeInPoints { get => _font.SizeInPoints; set => _font = new Font(_font.FontFamily, value); }
+        
         public float PixelsPerUnit { get; set; } = 10;
 
         public float Unit { get; set; } = 1f;
@@ -22,11 +25,11 @@ namespace PlotAndIntegrate
             var (startX, startY) = (CenterPoint.X % PixelsPerUnit, CenterPoint.Y % PixelsPerUnit);
             for (float i = startY; i < height; i += PixelsPerUnit)
             {
-                graphics.DrawLine(Pens.Black, new PointF(0, i), new PointF(width, i));
+                graphics.DrawLine(Pens.Gray, new PointF(0, i), new PointF(width, i));
             }
             for (float i = startX; i < width; i += PixelsPerUnit)
             {
-                graphics.DrawLine(Pens.Black, new PointF(i, 0), new PointF(i, height));
+                graphics.DrawLine(Pens.Gray, new PointF(i, 0), new PointF(i, height));
             }
         }
 
@@ -50,20 +53,20 @@ namespace PlotAndIntegrate
             graphics.FillPolygon(Brushes.Black, new PointF[] { new PointF(width, y), new PointF(width - ArrowLength, y + ArrowHeight), new PointF(width - ArrowLength, y - ArrowHeight) });
             graphics.FillPolygon(Brushes.Black, new PointF[] { new PointF(x, height), new PointF(x + ArrowHeight, height - ArrowLength), new PointF(x - ArrowHeight, height - ArrowLength) });
 
-            graphics.DrawString("y", font, Brushes.Black, new PointF(x + 12f, height - 16f));
-            graphics.DrawString("x", font, Brushes.Black, new PointF(width - 16f, y - 24f));
+            graphics.DrawString("y", _font, Brushes.Black, new PointF(x + ArrowLength, height - 2 * _font.SizeInPoints));
+            graphics.DrawString("x", _font, Brushes.Black, new PointF(width - _font.SizeInPoints, y - _font.SizeInPoints - ArrowLength));
         }
 
         public void DrawPlot(Graphics graphics, IFunction function, int width)
         {
             float xMin = GetCoordsAtPoint(new Point(0, 0)).X;
-            float XMax = GetCoordsAtPoint(new Point(width, 0)).X;
+            float xMax = GetCoordsAtPoint(new Point(width, 0)).X;
 
             PointF? p = null;
             if (function.IsValueOfXCorrect(xMin))
                 p = new PointF(xMin, function.Y(xMin));
             float step = Unit / PixelsPerUnit;
-            for (float x = xMin + step; x <= XMax; x += step)
+            for (float x = xMin + step; x <= xMax; x += step)
             {
                 p = TryConnectNextPoint(graphics, function, p, x);
             }
