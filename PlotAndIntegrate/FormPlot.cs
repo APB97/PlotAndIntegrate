@@ -21,11 +21,19 @@ namespace PlotAndIntegrate
             InitializeComponent();
             _controlToBitmap = controlToBitmap;
             _controlToBitmap.ControlToSaveBitmapFor = pictureBoxPlot;
+            pictureBoxPlot.MouseWheel += PictureBoxPlot_MouseWheel;
             _plotter = plotter;
             _lastCenterPoint = _plotter.CenterPoint = new(45, 42);
             textBoxUnit.Text = _plotter.Unit.ToString(CultureInfo.InvariantCulture);
             numericFontSize.Value = (decimal)plotter.FontSizeInPoints;
             textBoxFunction.Text = _function.FormatAsString();
+        }
+
+        private void PictureBoxPlot_MouseWheel(object sender, MouseEventArgs e)
+        {
+            _plotter.Unit = _plotter.Unit * (Math.Sign(e.Delta) == 1 ? 1/1.1f : 1.1f);
+            textBoxUnit.Text = _plotter.Unit.ToString(CultureInfo.InvariantCulture);
+            pictureBoxPlot.Invalidate();
         }
 
         private void PictureBoxPlot_Paint(object sender, PaintEventArgs e)
