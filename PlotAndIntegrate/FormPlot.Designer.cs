@@ -54,7 +54,9 @@ namespace PlotAndIntegrate
             this.pictureBoxPlot.TabStop = false;
             this.pictureBoxPlot.SizeChanged += new System.EventHandler(this.PictureBoxPlot_SizeChanged);
             this.pictureBoxPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxPlot_Paint);
+            this.pictureBoxPlot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxPlot_MouseDown);
             this.pictureBoxPlot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseMove);
+            this.pictureBoxPlot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxPlot_MouseUp);
             // 
             // textBoxCoordinates
             // 

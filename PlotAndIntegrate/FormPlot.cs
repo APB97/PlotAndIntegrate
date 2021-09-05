@@ -12,6 +12,9 @@ namespace PlotAndIntegrate
         private readonly IWinFormsPlotter _plotter;
         private readonly IControlToBitmap _controlToBitmap;
         private IFunction _function = new PolynomialFunction(1, -2, 1, -4);
+        private bool _mousePressedOnPlot = false;
+        private Point _lastCenterPoint;
+        private Point _pressedAtLocation;
 
         public FormPlot(IControlToBitmap controlToBitmap, IWinFormsPlotter plotter)
         {
@@ -19,7 +22,7 @@ namespace PlotAndIntegrate
             _controlToBitmap = controlToBitmap;
             _controlToBitmap.ControlToSaveBitmapFor = pictureBoxPlot;
             _plotter = plotter;
-            _plotter.CenterPoint = new(45, 42);
+            _lastCenterPoint = _plotter.CenterPoint = new(45, 42);
             textBoxUnit.Text = _plotter.Unit.ToString(CultureInfo.InvariantCulture);
             numericFontSize.Value = (decimal)plotter.FontSizeInPoints;
             textBoxFunction.Text = _function.FormatAsString();
@@ -37,12 +40,20 @@ namespace PlotAndIntegrate
             _plotter.DrawGrid(graphics, width, height);
             _plotter.DrawAxes(graphics, width, height);
             _plotter.DrawPlot(graphics, _function, width);
-            pictureBoxPlot.Invalidate();
         }
 
         private void PictureBoxPlot_MouseMove(object sender, MouseEventArgs e)
         {
             DisplayCoordinates(e.Location);
+            MoveCenterIfMousePressed(e.Location);
+        }
+
+        private void MoveCenterIfMousePressed(Point location)
+        {
+            if (!_mousePressedOnPlot) return;
+            
+            _plotter.CenterPoint = new Point(_lastCenterPoint.X + location.X - _pressedAtLocation.X, _lastCenterPoint.Y + location.Y - _pressedAtLocation.Y);
+            pictureBoxPlot.Invalidate();
         }
 
         private void DisplayCoordinates(Point point)
@@ -99,6 +110,18 @@ namespace PlotAndIntegrate
         {
             _plotter.FontSizeInPoints = (float)numericFontSize.Value;
             pictureBoxPlot.Invalidate();
+        }
+
+        private void pictureBoxPlot_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mousePressedOnPlot = true;
+            _pressedAtLocation = e.Location;
+        }
+
+        private void pictureBoxPlot_MouseUp(object sender, MouseEventArgs e)
+        {
+            _mousePressedOnPlot = false;
+            _lastCenterPoint = _plotter.CenterPoint;
         }
     }
 }
