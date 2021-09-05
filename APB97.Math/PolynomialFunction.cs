@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace APB97.Math
 {
@@ -50,6 +51,33 @@ namespace APB97.Math
             }
             Coefficients = parameters.ToArray();
             return true;
+        }
+
+        public string FormatAsString()
+        {
+            return string.Join(' ',
+                Coefficients.Zip(Enumerable.Range(0, Coefficients.Length).Reverse())
+                .Select(SelectAsString).Where(s => !string.IsNullOrEmpty(s)));
+        }
+
+        private string SelectAsString((float coefficient, int powerOfX) tuple)
+        {
+            if (Coefficients.Length == 1)
+                return $"{tuple.coefficient}";
+            if (tuple.coefficient == 0)
+                return string.Empty;
+            if (tuple.powerOfX != Coefficients.Length - 1 && tuple.coefficient > 0)
+                return $"+{tuple.coefficient}{PowerOfXAsString(tuple.powerOfX)}";
+            return $"{tuple.coefficient}{PowerOfXAsString(tuple.powerOfX)}";
+        }
+
+        private static string PowerOfXAsString(int power)
+        {
+            if (power == 0)
+                return string.Empty;
+            if (power == 1)
+                return "x";
+            return $"x^{power}";
         }
     }
 }

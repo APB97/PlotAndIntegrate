@@ -50,5 +50,10 @@ namespace APB97.Math
             LogarithmBase = param;
             return true;
         }
+
+        public string FormatAsString()
+        {
+            return $"log_{logarithmBase}(x)";
+        }
     }
 }

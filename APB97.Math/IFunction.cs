@@ -7,5 +7,6 @@ namespace APB97.Math
         bool IsValueOfXCorrect(float x);
         float Y(float x);
         bool TryPassParameters(string[] splitBySpace);
+        string FormatAsString();
     }
 }

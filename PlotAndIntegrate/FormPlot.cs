@@ -22,6 +22,7 @@ namespace PlotAndIntegrate
             _plotter.CenterPoint = new(45, 42);
             textBoxUnit.Text = _plotter.Unit.ToString(CultureInfo.InvariantCulture);
             numericFontSize.Value = (decimal)plotter.FontSizeInPoints;
+            textBoxFunction.Text = _function.FormatAsString();
         }
 
         private void PictureBoxPlot_Paint(object sender, PaintEventArgs e)
@@ -67,7 +68,8 @@ namespace PlotAndIntegrate
 
         private void TextBoxUnit_Validated(object sender, EventArgs e)
         {
-            _plotter.Unit = float.Parse(textBoxUnit.Text);
+            if (float.TryParse(textBoxUnit.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out float unit) && unit > 0)
+                _plotter.Unit = unit;
         }
 
         private void ButtonSaveAsImage_Click(object sender, EventArgs e)
@@ -88,6 +90,7 @@ namespace PlotAndIntegrate
             if (picker.ShowDialog() == DialogResult.OK)
             {
                 _function = picker.SelectedFunction;
+                textBoxFunction.Text = _function.FormatAsString();
                 pictureBoxPlot.Invalidate();
             }
         }
