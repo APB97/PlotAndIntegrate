@@ -64,9 +64,9 @@ namespace PlotAndIntegrate
 
             PointF? p = null;
             if (function.IsValueOfXCorrect(xMin))
-                p = new PointF(xMin, function.Y(xMin));
+                p = GetPoint(xMin, function.Y(xMin));
             float step = Unit / PixelsPerUnit;
-            for (float x = xMin + step; x <= xMax; x += step)
+            for (float x = xMin; x <= xMax; x += step)
             {
                 p = TryConnectNextPoint(graphics, function, p, x);
             }
