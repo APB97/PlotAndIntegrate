@@ -9,6 +9,7 @@ namespace PlotAndIntegrate
         private const float ArrowHeight = 8f;
         private const float DefaultFontSize = 16f;
         private Font _font = new(FontFamily.GenericSansSerif, DefaultFontSize);
+        private Pen _plotPen = new(Color.Blue, 2f);
 
         public float FontSizeInPoints { get => _font.SizeInPoints; set => _font = new Font(_font.FontFamily, value); }
         
@@ -19,6 +20,10 @@ namespace PlotAndIntegrate
         public Point CenterPoint { get; set; }
 
         public Pen ThickerPen { get; private set; } = new Pen(Color.Black, 2f);
+
+        public Color PlotColor { get => _plotPen.Color; set => _plotPen.Color = value; }
+
+        public float PlotWidth { get => _plotPen.Width; set => _plotPen.Width = value; }
 
         public void DrawGrid(Graphics graphics, int width, int height)
         {
@@ -78,7 +83,7 @@ namespace PlotAndIntegrate
             {
                 PointF nextPoint = GetPoint(x, function.Y(x));
                 if (currentPoint.HasValue)
-                    graphics.DrawLine(Pens.Blue, currentPoint.Value, nextPoint);
+                    graphics.DrawLine(_plotPen, currentPoint.Value, nextPoint);
                 return nextPoint;
             }
             return null;

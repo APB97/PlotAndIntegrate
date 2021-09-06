@@ -46,9 +46,14 @@ namespace PlotAndIntegrate
             this.buttonIntegrate = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.numericPlotWidth = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonPlotColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFontSize)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericPlotWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxPlot
@@ -228,11 +233,66 @@ namespace PlotAndIntegrate
             this.label3.TabIndex = 0;
             this.label3.Text = "from:";
             // 
+            // numericPlotWidth
+            // 
+            this.numericPlotWidth.Location = new System.Drawing.Point(327, 41);
+            this.numericPlotWidth.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numericPlotWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericPlotWidth.Name = "numericPlotWidth";
+            this.numericPlotWidth.Size = new System.Drawing.Size(46, 23);
+            this.numericPlotWidth.TabIndex = 12;
+            this.numericPlotWidth.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericPlotWidth.ValueChanged += new System.EventHandler(this.NumericPlotWidth_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(268, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 15);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Plot size";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(268, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 15);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Plot color";
+            // 
+            // buttonPlotColor
+            // 
+            this.buttonPlotColor.BackColor = System.Drawing.Color.Blue;
+            this.buttonPlotColor.Location = new System.Drawing.Point(327, 70);
+            this.buttonPlotColor.Name = "buttonPlotColor";
+            this.buttonPlotColor.Size = new System.Drawing.Size(46, 23);
+            this.buttonPlotColor.TabIndex = 15;
+            this.buttonPlotColor.UseVisualStyleBackColor = false;
+            this.buttonPlotColor.Click += new System.EventHandler(this.ButtonPlotColor_Click);
+            // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 561);
+            this.Controls.Add(this.buttonPlotColor);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numericPlotWidth);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxFunction);
             this.Controls.Add(this.label2);
@@ -249,6 +309,7 @@ namespace PlotAndIntegrate
             ((System.ComponentModel.ISupportInitialize)(this.numericFontSize)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericPlotWidth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,6 +334,10 @@ namespace PlotAndIntegrate
         private System.Windows.Forms.Button buttonIntegrate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxResult;
+        private System.Windows.Forms.NumericUpDown numericPlotWidth;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonPlotColor;
     }
 }
 

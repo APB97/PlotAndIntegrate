@@ -8,6 +8,8 @@ namespace PlotAndIntegrate
         Point CenterPoint { get; set; }
         float Unit { get; set; }
         float FontSizeInPoints { get; set; }
+        Color PlotColor { get; set; }
+        float PlotWidth { get; set; }
 
         void DrawAxes(Graphics graphics, int width, int height);
         void DrawGrid(Graphics graphics, int width, int height);

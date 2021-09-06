@@ -147,5 +147,20 @@ namespace PlotAndIntegrate
             else
                 MessageBox.Show("Application couldn't calculate the integral. Ensure all inputs are correct and the calculation is possible.");
         }
+
+        private void NumericPlotWidth_ValueChanged(object sender, EventArgs e)
+        {
+            _plotter.PlotWidth = (float)numericPlotWidth.Value;
+            pictureBoxPlot.Invalidate();
+        }
+
+        private void ButtonPlotColor_Click(object sender, EventArgs e)
+        {
+            using ColorDialog colorDialog = new();
+            if (colorDialog.ShowDialog() != DialogResult.OK)
+                return;
+            buttonPlotColor.BackColor = _plotter.PlotColor = colorDialog.Color;
+            pictureBoxPlot.Invalidate();
+        }
     }
 }
