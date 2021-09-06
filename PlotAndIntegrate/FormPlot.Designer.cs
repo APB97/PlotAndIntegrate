@@ -38,8 +38,17 @@ namespace PlotAndIntegrate
             this.numericFontSize = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxFunction = new System.Windows.Forms.TextBox();
+            this.textBoxTo = new System.Windows.Forms.TextBox();
+            this.textBoxFrom = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxResult = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonIntegrate = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFontSize)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxPlot
@@ -54,9 +63,9 @@ namespace PlotAndIntegrate
             this.pictureBoxPlot.TabStop = false;
             this.pictureBoxPlot.SizeChanged += new System.EventHandler(this.PictureBoxPlot_SizeChanged);
             this.pictureBoxPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxPlot_Paint);
-            this.pictureBoxPlot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxPlot_MouseDown);
+            this.pictureBoxPlot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseDown);
             this.pictureBoxPlot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseMove);
-            this.pictureBoxPlot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxPlot_MouseUp);
+            this.pictureBoxPlot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseUp);
             // 
             // textBoxCoordinates
             // 
@@ -144,11 +153,87 @@ namespace PlotAndIntegrate
             this.textBoxFunction.Size = new System.Drawing.Size(250, 23);
             this.textBoxFunction.TabIndex = 8;
             // 
+            // textBoxTo
+            // 
+            this.textBoxTo.Location = new System.Drawing.Point(161, 16);
+            this.textBoxTo.Name = "textBoxTo";
+            this.textBoxTo.Size = new System.Drawing.Size(83, 23);
+            this.textBoxTo.TabIndex = 9;
+            // 
+            // textBoxFrom
+            // 
+            this.textBoxFrom.Location = new System.Drawing.Point(48, 16);
+            this.textBoxFrom.Name = "textBoxFrom";
+            this.textBoxFrom.Size = new System.Drawing.Size(80, 23);
+            this.textBoxFrom.TabIndex = 10;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBoxResult);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.buttonIntegrate);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textBoxTo);
+            this.groupBox1.Controls.Add(this.textBoxFrom);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(12, 412);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(250, 106);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Integrate";
+            // 
+            // textBoxResult
+            // 
+            this.textBoxResult.Location = new System.Drawing.Point(56, 75);
+            this.textBoxResult.Name = "textBoxResult";
+            this.textBoxResult.ReadOnly = true;
+            this.textBoxResult.Size = new System.Drawing.Size(188, 23);
+            this.textBoxResult.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 15);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Result:";
+            // 
+            // buttonIntegrate
+            // 
+            this.buttonIntegrate.Location = new System.Drawing.Point(6, 45);
+            this.buttonIntegrate.Name = "buttonIntegrate";
+            this.buttonIntegrate.Size = new System.Drawing.Size(238, 23);
+            this.buttonIntegrate.TabIndex = 11;
+            this.buttonIntegrate.Text = "Integrate";
+            this.buttonIntegrate.UseVisualStyleBackColor = true;
+            this.buttonIntegrate.Click += new System.EventHandler(this.ButtonIntegrate_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(134, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 15);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "to:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "from:";
+            // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 561);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxFunction);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericFontSize);
@@ -162,6 +247,8 @@ namespace PlotAndIntegrate
             this.Text = "Plot";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFontSize)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,6 +265,14 @@ namespace PlotAndIntegrate
         private System.Windows.Forms.NumericUpDown numericFontSize;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxFunction;
+        private System.Windows.Forms.TextBox textBoxTo;
+        private System.Windows.Forms.TextBox textBoxFrom;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonIntegrate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxResult;
     }
 }
 

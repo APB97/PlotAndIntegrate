@@ -1,3 +1,4 @@
+using APB97.Math;
 using System;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace PlotAndIntegrate
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPlot(new ControlToBitmap(), new WinFormsPlotter()));
+            Application.Run(new FormPlot(new ControlToBitmap(), new WinFormsPlotter(), new IntegrateTrapezes { Steps = 100_000 }));
         }
     }
 }

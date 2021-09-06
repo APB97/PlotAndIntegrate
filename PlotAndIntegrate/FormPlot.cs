@@ -11,18 +11,20 @@ namespace PlotAndIntegrate
     {
         private readonly IWinFormsPlotter _plotter;
         private readonly IControlToBitmap _controlToBitmap;
+        private IIntegrate _integrator;
         private IFunction _function = new PolynomialFunction(1, -2, 1, -4);
         private bool _mousePressedOnPlot = false;
         private Point _lastCenterPoint;
         private Point _pressedAtLocation;
 
-        public FormPlot(IControlToBitmap controlToBitmap, IWinFormsPlotter plotter)
+        public FormPlot(IControlToBitmap controlToBitmap, IWinFormsPlotter plotter, IIntegrate integrateMethod)
         {
             InitializeComponent();
             _controlToBitmap = controlToBitmap;
+            _plotter = plotter;
+            _integrator = integrateMethod;
             _controlToBitmap.ControlToSaveBitmapFor = pictureBoxPlot;
             pictureBoxPlot.MouseWheel += PictureBoxPlot_MouseWheel;
-            _plotter = plotter;
             _lastCenterPoint = _plotter.CenterPoint = new(45, 42);
             textBoxUnit.Text = _plotter.Unit.ToString(CultureInfo.InvariantCulture);
             numericFontSize.Value = (decimal)plotter.FontSizeInPoints;
@@ -120,16 +122,30 @@ namespace PlotAndIntegrate
             pictureBoxPlot.Invalidate();
         }
 
-        private void pictureBoxPlot_MouseDown(object sender, MouseEventArgs e)
+        private void PictureBoxPlot_MouseDown(object sender, MouseEventArgs e)
         {
             _mousePressedOnPlot = true;
             _pressedAtLocation = e.Location;
         }
 
-        private void pictureBoxPlot_MouseUp(object sender, MouseEventArgs e)
+        private void PictureBoxPlot_MouseUp(object sender, MouseEventArgs e)
         {
             _mousePressedOnPlot = false;
             _lastCenterPoint = _plotter.CenterPoint;
+        }
+
+        private void ButtonIntegrate_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(textBoxFrom.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out float fromX) &&
+                float.TryParse(textBoxTo.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out float toX) &&
+                _function.IsValueOfXCorrect(fromX) &&
+                _function.IsValueOfXCorrect(toX) &&
+                _integrator.TryIntegrate(_function, fromX, toX, out float result))
+            {
+                textBoxResult.Text = result.ToString("F4", CultureInfo.InvariantCulture);
+            }
+            else
+                MessageBox.Show("Application couldn't calculate the integral. Ensure all inputs are correct and the calculation is possible.");
         }
     }
 }
