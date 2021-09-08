@@ -51,15 +51,34 @@ namespace PlotAndIntegrate
         public void DrawAxes(Graphics graphics, int width, int height)
         {
             var (x, y) = (CenterPoint.X, CenterPoint.Y);
+            DrawAxesLines(graphics, width, height, x, y);
+            DrawHorizontalArrowWhenAdequate(graphics, width, x, y);
+            DrawVerticalArrowWhenAdequate(graphics, height, x, y);
+            DrawAxesLabels(graphics, width, height, x, y);
+        }
 
-            graphics.DrawLine(ThickerPen, new PointF(0, y), new PointF(width, y));
-            graphics.DrawLine(ThickerPen, new PointF(x, 0), new PointF(x, height));
+        private void DrawAxesLines(Graphics graphics, int controlWidth, int controlHeight, int x, int y)
+        {
+            graphics.DrawLine(ThickerPen, new PointF(0, y), new PointF(controlWidth, y));
+            graphics.DrawLine(ThickerPen, new PointF(x, 0), new PointF(x, controlHeight));
+        }
 
-            graphics.FillPolygon(Brushes.Black, new PointF[] { new PointF(width, y), new PointF(width - ArrowLength, y + ArrowHeight), new PointF(width - ArrowLength, y - ArrowHeight) });
-            graphics.FillPolygon(Brushes.Black, new PointF[] { new PointF(x, height), new PointF(x + ArrowHeight, height - ArrowLength), new PointF(x - ArrowHeight, height - ArrowLength) });
+        private static void DrawHorizontalArrowWhenAdequate(Graphics graphics, int controlWidth, int x, int y)
+        {
+            if (x <= controlWidth - ArrowLength)
+                graphics.FillPolygon(Brushes.Black, new PointF[] { new PointF(controlWidth, y), new PointF(controlWidth - ArrowLength, y + ArrowHeight), new PointF(controlWidth - ArrowLength, y - ArrowHeight) });
+        }
 
-            graphics.DrawString("y", _font, Brushes.Black, new PointF(x + ArrowLength, height - 2 * _font.SizeInPoints));
-            graphics.DrawString("x", _font, Brushes.Black, new PointF(width - _font.SizeInPoints, y - _font.SizeInPoints - ArrowLength));
+        private static void DrawVerticalArrowWhenAdequate(Graphics graphics, int controlHeight, int x, int y)
+        {
+            if (y <= controlHeight - ArrowLength)
+                graphics.FillPolygon(Brushes.Black, new PointF[] { new PointF(x, controlHeight), new PointF(x + ArrowHeight, controlHeight - ArrowLength), new PointF(x - ArrowHeight, controlHeight - ArrowLength) });
+        }
+
+        private void DrawAxesLabels(Graphics graphics, int controlWidth, int controlHeight, int x, int y)
+        {
+            graphics.DrawString("y", _font, Brushes.Black, new PointF(x + ArrowLength, controlHeight - 2 * _font.SizeInPoints));
+            graphics.DrawString("x", _font, Brushes.Black, new PointF(controlWidth - _font.SizeInPoints, y - _font.SizeInPoints - ArrowLength));
         }
 
         public void DrawPlot(Graphics graphics, IFunction function, int width)

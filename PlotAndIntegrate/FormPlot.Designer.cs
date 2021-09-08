@@ -305,6 +305,7 @@ namespace PlotAndIntegrate
             this.Controls.Add(this.pictureBoxPlot);
             this.Name = "FormPlot";
             this.Text = "Plot";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPlot_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFontSize)).EndInit();
             this.groupBox1.ResumeLayout(false);

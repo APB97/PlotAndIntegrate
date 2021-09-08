@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Windows.Forms;
+using PlotAndIntegrate.Properties;
 
 namespace PlotAndIntegrate
 {
@@ -25,15 +26,25 @@ namespace PlotAndIntegrate
             _integrator = integrateMethod;
             _controlToBitmap.ControlToSaveBitmapFor = pictureBoxPlot;
             pictureBoxPlot.MouseWheel += PictureBoxPlot_MouseWheel;
-            _lastCenterPoint = _plotter.CenterPoint = new(45, 42);
             textBoxUnit.Text = _plotter.Unit.ToString(CultureInfo.InvariantCulture);
-            numericFontSize.Value = (decimal)plotter.FontSizeInPoints;
             textBoxFunction.Text = _function.FormatAsString();
+            
+            _lastCenterPoint = _plotter.CenterPoint = Settings.Default.PlotCenter;
+            numericFontSize.Value = Settings.Default.FontSize;
+            plotter.FontSizeInPoints = (float)Settings.Default.FontSize;
+            
+            numericPlotWidth.Value = Settings.Default.PlotWidth;
+            plotter.PlotWidth = (float)Settings.Default.PlotWidth;
+
+            plotter.Unit = Settings.Default.Unit;
+            textBoxUnit.Text = Settings.Default.Unit.ToString(CultureInfo.InvariantCulture);
+
+            buttonPlotColor.BackColor = plotter.PlotColor = Settings.Default.PlotColor;
         }
 
         private void PictureBoxPlot_MouseWheel(object sender, MouseEventArgs e)
         {
-            _plotter.Unit = _plotter.Unit * (Math.Sign(e.Delta) == 1 ? 1/1.1f : 1.1f);
+            _plotter.Unit *= (Math.Sign(e.Delta) == 1 ? 1/1.1f : 1.1f);
             textBoxUnit.Text = _plotter.Unit.ToString(CultureInfo.InvariantCulture);
             pictureBoxPlot.Invalidate();
         }
@@ -161,6 +172,17 @@ namespace PlotAndIntegrate
                 return;
             buttonPlotColor.BackColor = _plotter.PlotColor = colorDialog.Color;
             pictureBoxPlot.Invalidate();
+        }
+
+        private void FormPlot_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Settings.Default.FontSize = numericFontSize.Value;
+            Settings.Default.PlotWidth = numericPlotWidth.Value;
+            Settings.Default.PlotColor = buttonPlotColor.BackColor;
+            Settings.Default.PlotCenter = _plotter.CenterPoint;
+            Settings.Default.Unit = _plotter.Unit;
+
+            Settings.Default.Save();
         }
     }
 }
