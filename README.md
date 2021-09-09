@@ -2,7 +2,7 @@
 
 ![Plot and Integrate](images/Plot_and_Integrate.png)
 
-Windows Forms application that can be used for drawing simple plots and calculating integrals.
+Windows Forms practice application that can be used for drawing simple plots and calculating integrals.
 
 # Installation
 
@@ -18,6 +18,9 @@ It will show a predefined plot, that can be panned with mouse while mouse button
 Scrolling will change the Unit value presented below the plot. Just under the plot you can find coordinate values under mouse cursor position.
 Plot can be saved as a PNG image using `Save as image...` button.
 
-Below it, user can find `Pick a function` button which shows a new Form where a different fucntion can be picked.
+Below it, user can find `Pick a function` button which shows a new Form where a different function can be picked.
 Currently there are only logarithmic and polynomial functions.
 User can see the function's formula directly under this button.
+
+On the right side, there are settings for fontsize, plot width and plot color.
+The last option available is calculating the integral for a given range on the bottom of the form.
