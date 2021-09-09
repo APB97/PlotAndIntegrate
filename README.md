@@ -1,5 +1,7 @@
 # Plot and Integrate
 
+![Plot and Integrate](images/Plot_and_Integrate.png)
+
 Windows Forms application that can be used for drawing simple plots and calculating integrals.
 
 # Installation
@@ -9,8 +11,10 @@ Resulting files will appear in `PlotAndIntegrate\bin\` directory.
 
 # Usage
 
+![Default settings](images/default-settings.png)
+
 Launch the compiled project from IDE or directly from output directory.
-It will show a predifined plot, that can be panned with mouse while mouse button is pressed, or zoomed by scrolling the mouse wheel.
+It will show a predefined plot, that can be panned with mouse while mouse button is pressed, or zoomed by scrolling the mouse wheel.
 Scrolling will change the Unit value presented below the plot. Just under the plot you can find coordinate values under mouse cursor position.
 Plot can be saved as a PNG image using `Save as image...` button.
 
