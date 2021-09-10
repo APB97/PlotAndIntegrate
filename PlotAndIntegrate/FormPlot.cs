@@ -84,12 +84,7 @@ namespace PlotAndIntegrate
 
         private void PictureBoxPlot_SizeChanged(object sender, EventArgs e)
         {
-            SyncWidth(textBoxCoordinates, pictureBoxPlot);
-        }
-
-        private static void SyncWidth(Control target, Control source)
-        {
-            target.Width = source.Width;
+            pictureBoxPlot.Invalidate();
         }
 
         private void TextBoxUnit_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -183,6 +178,13 @@ namespace PlotAndIntegrate
             Settings.Default.Unit = _plotter.Unit;
 
             Settings.Default.Save();
+        }
+
+        private void PictureBoxPlot_DoubleClick(object sender, EventArgs e)
+        {
+            pictureBoxPlot.Dock = pictureBoxPlot.Dock == DockStyle.None ? DockStyle.Fill : DockStyle.None;
+            panelOptions.Dock = panelOptions.Dock == DockStyle.None ? DockStyle.Right : DockStyle.None;
+            pictureBoxPlot.Invalidate();
         }
     }
 }
