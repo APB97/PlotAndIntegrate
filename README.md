@@ -25,6 +25,6 @@ User can see the function's formula directly under this button.
 There are also settings for fontsize, plot width and plot color.
 The last option available is calculating the integral for a given range at the bottom of the form's options section.
 
-Plot can be double-clicked which causes it to take whole form space and options section moves to the right.
+Plot can be double-clicked which causes it to take whole form space and makes options section move to the right.
 
 ![Plot made larger](images/plot-made-larger.png)
