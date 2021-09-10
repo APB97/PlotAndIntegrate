@@ -50,10 +50,12 @@ namespace PlotAndIntegrate
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonPlotColor = new System.Windows.Forms.Button();
+            this.panelOptions = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFontSize)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericPlotWidth)).BeginInit();
+            this.panelOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxPlot
@@ -68,13 +70,16 @@ namespace PlotAndIntegrate
             this.pictureBoxPlot.TabStop = false;
             this.pictureBoxPlot.SizeChanged += new System.EventHandler(this.PictureBoxPlot_SizeChanged);
             this.pictureBoxPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxPlot_Paint);
+            this.pictureBoxPlot.DoubleClick += new System.EventHandler(this.PictureBoxPlot_DoubleClick);
             this.pictureBoxPlot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseDown);
             this.pictureBoxPlot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseMove);
             this.pictureBoxPlot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBoxPlot_MouseUp);
             // 
             // textBoxCoordinates
             // 
-            this.textBoxCoordinates.Location = new System.Drawing.Point(12, 269);
+            this.textBoxCoordinates.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCoordinates.Location = new System.Drawing.Point(0, 0);
+            this.textBoxCoordinates.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxCoordinates.Name = "textBoxCoordinates";
             this.textBoxCoordinates.ReadOnly = true;
             this.textBoxCoordinates.Size = new System.Drawing.Size(250, 23);
@@ -83,7 +88,7 @@ namespace PlotAndIntegrate
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 299);
+            this.label1.Location = new System.Drawing.Point(0, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 15);
             this.label1.TabIndex = 2;
@@ -91,7 +96,7 @@ namespace PlotAndIntegrate
             // 
             // textBoxUnit
             // 
-            this.textBoxUnit.Location = new System.Drawing.Point(47, 296);
+            this.textBoxUnit.Location = new System.Drawing.Point(35, 26);
             this.textBoxUnit.Name = "textBoxUnit";
             this.textBoxUnit.Size = new System.Drawing.Size(215, 23);
             this.textBoxUnit.TabIndex = 3;
@@ -100,7 +105,7 @@ namespace PlotAndIntegrate
             // 
             // buttonSaveAsImage
             // 
-            this.buttonSaveAsImage.Location = new System.Drawing.Point(12, 325);
+            this.buttonSaveAsImage.Location = new System.Drawing.Point(0, 55);
             this.buttonSaveAsImage.Name = "buttonSaveAsImage";
             this.buttonSaveAsImage.Size = new System.Drawing.Size(250, 23);
             this.buttonSaveAsImage.TabIndex = 4;
@@ -110,7 +115,7 @@ namespace PlotAndIntegrate
             // 
             // buttonPickNewOne
             // 
-            this.buttonPickNewOne.Location = new System.Drawing.Point(12, 354);
+            this.buttonPickNewOne.Location = new System.Drawing.Point(0, 84);
             this.buttonPickNewOne.Name = "buttonPickNewOne";
             this.buttonPickNewOne.Size = new System.Drawing.Size(250, 23);
             this.buttonPickNewOne.TabIndex = 5;
@@ -120,7 +125,7 @@ namespace PlotAndIntegrate
             // 
             // numericFontSize
             // 
-            this.numericFontSize.Location = new System.Drawing.Point(327, 12);
+            this.numericFontSize.Location = new System.Drawing.Point(67, 248);
             this.numericFontSize.Maximum = new decimal(new int[] {
             36,
             0,
@@ -144,7 +149,7 @@ namespace PlotAndIntegrate
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(268, 15);
+            this.label2.Location = new System.Drawing.Point(8, 251);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 15);
             this.label2.TabIndex = 7;
@@ -152,7 +157,7 @@ namespace PlotAndIntegrate
             // 
             // textBoxFunction
             // 
-            this.textBoxFunction.Location = new System.Drawing.Point(12, 383);
+            this.textBoxFunction.Location = new System.Drawing.Point(0, 113);
             this.textBoxFunction.Name = "textBoxFunction";
             this.textBoxFunction.ReadOnly = true;
             this.textBoxFunction.Size = new System.Drawing.Size(250, 23);
@@ -181,7 +186,7 @@ namespace PlotAndIntegrate
             this.groupBox1.Controls.Add(this.textBoxTo);
             this.groupBox1.Controls.Add(this.textBoxFrom);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 412);
+            this.groupBox1.Location = new System.Drawing.Point(0, 142);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(250, 106);
             this.groupBox1.TabIndex = 11;
@@ -235,7 +240,7 @@ namespace PlotAndIntegrate
             // 
             // numericPlotWidth
             // 
-            this.numericPlotWidth.Location = new System.Drawing.Point(327, 41);
+            this.numericPlotWidth.Location = new System.Drawing.Point(67, 277);
             this.numericPlotWidth.Maximum = new decimal(new int[] {
             6,
             0,
@@ -259,7 +264,7 @@ namespace PlotAndIntegrate
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(268, 43);
+            this.label6.Location = new System.Drawing.Point(8, 279);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 15);
             this.label6.TabIndex = 13;
@@ -268,7 +273,7 @@ namespace PlotAndIntegrate
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(268, 74);
+            this.label7.Location = new System.Drawing.Point(119, 279);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 15);
             this.label7.TabIndex = 14;
@@ -277,31 +282,39 @@ namespace PlotAndIntegrate
             // buttonPlotColor
             // 
             this.buttonPlotColor.BackColor = System.Drawing.Color.Blue;
-            this.buttonPlotColor.Location = new System.Drawing.Point(327, 70);
+            this.buttonPlotColor.Location = new System.Drawing.Point(178, 275);
             this.buttonPlotColor.Name = "buttonPlotColor";
             this.buttonPlotColor.Size = new System.Drawing.Size(46, 23);
             this.buttonPlotColor.TabIndex = 15;
             this.buttonPlotColor.UseVisualStyleBackColor = false;
             this.buttonPlotColor.Click += new System.EventHandler(this.ButtonPlotColor_Click);
             // 
+            // panelOptions
+            // 
+            this.panelOptions.Controls.Add(this.textBoxCoordinates);
+            this.panelOptions.Controls.Add(this.buttonPlotColor);
+            this.panelOptions.Controls.Add(this.textBoxUnit);
+            this.panelOptions.Controls.Add(this.label7);
+            this.panelOptions.Controls.Add(this.label1);
+            this.panelOptions.Controls.Add(this.label6);
+            this.panelOptions.Controls.Add(this.buttonSaveAsImage);
+            this.panelOptions.Controls.Add(this.numericPlotWidth);
+            this.panelOptions.Controls.Add(this.buttonPickNewOne);
+            this.panelOptions.Controls.Add(this.label2);
+            this.panelOptions.Controls.Add(this.numericFontSize);
+            this.panelOptions.Controls.Add(this.textBoxFunction);
+            this.panelOptions.Controls.Add(this.groupBox1);
+            this.panelOptions.Location = new System.Drawing.Point(12, 268);
+            this.panelOptions.Name = "panelOptions";
+            this.panelOptions.Size = new System.Drawing.Size(250, 313);
+            this.panelOptions.TabIndex = 17;
+            // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 561);
-            this.Controls.Add(this.buttonPlotColor);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.numericPlotWidth);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBoxFunction);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.numericFontSize);
-            this.Controls.Add(this.buttonPickNewOne);
-            this.Controls.Add(this.buttonSaveAsImage);
-            this.Controls.Add(this.textBoxUnit);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxCoordinates);
+            this.ClientSize = new System.Drawing.Size(800, 593);
+            this.Controls.Add(this.panelOptions);
             this.Controls.Add(this.pictureBoxPlot);
             this.Name = "FormPlot";
             this.Text = "Plot";
@@ -311,8 +324,9 @@ namespace PlotAndIntegrate
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericPlotWidth)).EndInit();
+            this.panelOptions.ResumeLayout(false);
+            this.panelOptions.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -339,6 +353,7 @@ namespace PlotAndIntegrate
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonPlotColor;
+        private System.Windows.Forms.Panel panelOptions;
     }
 }
 
