@@ -22,5 +22,9 @@ Below it, user can find `Pick a function` button which shows a new Form where a 
 Currently there are only logarithmic and polynomial functions.
 User can see the function's formula directly under this button.
 
-On the right side, there are settings for fontsize, plot width and plot color.
-The last option available is calculating the integral for a given range on the bottom of the form.
+There are also settings for fontsize, plot width and plot color.
+The last option available is calculating the integral for a given range at the bottom of the form's options section.
+
+Plot can be double-clicked which causes it to take whole form space and options section moves to the right.
+
+![Plot made larger](images/plot-made-larger.png)
