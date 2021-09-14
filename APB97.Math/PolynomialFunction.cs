@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using static APB97.Math.FunctionFormatter;
 
 namespace APB97.Math
 {
@@ -45,7 +47,7 @@ namespace APB97.Math
             List<float> parameters = new();
             foreach (var item in splitBySpace)
             {
-                if (!float.TryParse(item, out float param))
+                if (!float.TryParse(item, NumberStyles.Float, CultureInfo.InvariantCulture, out float param))
                     return false;
                 parameters.Add(param);
             }
@@ -55,29 +57,15 @@ namespace APB97.Math
 
         public string FormatAsString()
         {
-            return string.Join(' ',
-                Coefficients.Zip(Enumerable.Range(0, Coefficients.Length).Reverse())
-                .Select(SelectAsString).Where(s => !string.IsNullOrEmpty(s)));
+            IEnumerable<(float First, int Second)> coefficientPowerPairs = Coefficients.Zip(Enumerable.Range(0, Coefficients.Length).Reverse());
+            IEnumerable<string> formattedWithoutZerosAndEmpties = coefficientPowerPairs.Select(SelectAsString).Where(s => !string.IsNullOrEmpty(s) && s != "0");
+            string joinedElements = string.Join(string.Empty, formattedWithoutZerosAndEmpties);
+            return string.IsNullOrEmpty(joinedElements) ? "0" : joinedElements;
         }
 
         private string SelectAsString((float coefficient, int powerOfX) tuple)
         {
-            if (Coefficients.Length == 1)
-                return $"{tuple.coefficient}";
-            if (tuple.coefficient == 0)
-                return string.Empty;
-            if (tuple.powerOfX != Coefficients.Length - 1 && tuple.coefficient > 0)
-                return $"+{tuple.coefficient}{PowerOfXAsString(tuple.powerOfX)}";
-            return $"{tuple.coefficient}{PowerOfXAsString(tuple.powerOfX)}";
-        }
-
-        private static string PowerOfXAsString(int power)
-        {
-            if (power == 0)
-                return string.Empty;
-            if (power == 1)
-                return "x";
-            return $"x^{power}";
+            return FormatCoefficientWithPower(tuple.coefficient, "x", tuple.powerOfX, Coefficients.Length - 1);
         }
     }
 }

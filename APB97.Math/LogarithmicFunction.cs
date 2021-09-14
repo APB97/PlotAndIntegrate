@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace APB97.Math
 {
@@ -45,7 +46,7 @@ namespace APB97.Math
 
         public bool TryPassParameters(string[] splitBySpace)
         {
-            if (splitBySpace.Length is not 1 || !float.TryParse(splitBySpace[0], out float param))
+            if (splitBySpace.Length is not 1 || !float.TryParse(splitBySpace[0], NumberStyles.Float, CultureInfo.InvariantCulture, out float param))
                 return false;
             LogarithmBase = param;
             return true;
