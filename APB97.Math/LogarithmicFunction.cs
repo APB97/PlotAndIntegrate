@@ -12,7 +12,7 @@ namespace APB97.Math
             get => logarithmBase;
             set
             {
-                if (logarithmBase is > 0 and not 1)
+                if (value is > 0 and not 1)
                     logarithmBase = value;
             }
         }
