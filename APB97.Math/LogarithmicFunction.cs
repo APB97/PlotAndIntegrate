@@ -44,9 +44,9 @@ namespace APB97.Math
             return new LogarithmicFunction(LogarithmBase);
         }
 
-        public bool TryPassParameters(string[] splitBySpace)
+        public bool TryPassParameters(string[] parameters)
         {
-            if (splitBySpace.Length is not 1 || !float.TryParse(splitBySpace[0], NumberStyles.Float, CultureInfo.InvariantCulture, out float param))
+            if (parameters.Length is not 1 || !float.TryParse(parameters[0], NumberStyles.Float, CultureInfo.InvariantCulture, out float param))
                 return false;
             LogarithmBase = param;
             return true;
