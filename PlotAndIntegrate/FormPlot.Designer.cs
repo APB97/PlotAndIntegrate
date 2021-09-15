@@ -60,9 +60,6 @@ namespace PlotAndIntegrate
             // 
             // pictureBoxPlot
             // 
-            this.pictureBoxPlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxPlot.Location = new System.Drawing.Point(12, 12);
             this.pictureBoxPlot.Name = "pictureBoxPlot";
             this.pictureBoxPlot.Size = new System.Drawing.Size(250, 250);
