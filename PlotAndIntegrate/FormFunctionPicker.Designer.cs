@@ -38,11 +38,13 @@ namespace PlotAndIntegrate
             // 
             // comboBoxType
             // 
+            this.comboBoxType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Location = new System.Drawing.Point(12, 27);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(209, 23);
+            this.comboBoxType.Size = new System.Drawing.Size(420, 23);
             this.comboBoxType.TabIndex = 0;
             this.comboBoxType.SelectedValueChanged += new System.EventHandler(this.ComboBoxType_SelectedValueChanged);
             // 
@@ -53,15 +55,17 @@ namespace PlotAndIntegrate
             this.buttonCreateNew.Name = "buttonCreateNew";
             this.buttonCreateNew.Size = new System.Drawing.Size(75, 23);
             this.buttonCreateNew.TabIndex = 1;
-            this.buttonCreateNew.Text = "Create new";
+            this.buttonCreateNew.Text = "Accept";
             this.buttonCreateNew.UseVisualStyleBackColor = true;
             this.buttonCreateNew.Click += new System.EventHandler(this.ButtonCreateNew_Click);
             // 
             // textBoxParameters
             // 
+            this.textBoxParameters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxParameters.Location = new System.Drawing.Point(12, 71);
             this.textBoxParameters.Name = "textBoxParameters";
-            this.textBoxParameters.Size = new System.Drawing.Size(209, 23);
+            this.textBoxParameters.Size = new System.Drawing.Size(420, 23);
             this.textBoxParameters.TabIndex = 2;
             this.textBoxParameters.Validating += new System.ComponentModel.CancelEventHandler(this.TextBoxParameters_Validating);
             // 
@@ -87,7 +91,7 @@ namespace PlotAndIntegrate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 393);
+            this.ClientSize = new System.Drawing.Size(444, 135);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxParameters);
