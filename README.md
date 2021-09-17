@@ -18,12 +18,12 @@ It will show a predefined plot, that can be panned with mouse while mouse button
 Scrolling will change the Unit value presented below the plot. Just under the plot you can find coordinate values under mouse cursor position.
 Plot can be saved as a PNG image using `Save as image...` button.
 
-Below it, user can find `Pick a function` button which shows a new Form where a different function can be picked.
+Below it, users can find `Pick a function` button which shows a new Form where a different function can be picked.
 Currently there are only logarithmic and polynomial functions.
-User can see the function's formula directly under this button.
+Users can see the function's formula directly under this button.
 
+Another option available is calculating the definite integral for a given range.
 There are also settings for fontsize, plot width and plot color.
-The last option available is calculating the integral for a given range at the bottom of the form's options section.
 
 Plot can be double-clicked which causes it to take whole form space and makes options section move to the right.
 
