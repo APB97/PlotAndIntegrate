@@ -2,3 +2,5 @@ obj/
 bin/
 .vs/PlotAndIntegrate/v16/
 .vs/PlotAndIntegrate/DesignTimeBuild/.dtbcache.v2
+*.user
+*.pubxml
