@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using APB97.Features;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using static APB97.Math.FunctionFormatter;
@@ -7,6 +8,8 @@ namespace APB97.Math
 {
     public class PolynomialFunction : IFunction
     {
+        public PolynomialFunction() => Coefficients = System.Array.Empty<float>();
+
         public PolynomialFunction(params float[] coefficients)
         {
             Coefficients = coefficients;
@@ -34,7 +37,7 @@ namespace APB97.Math
 
         public override string ToString()
         {
-            return nameof(PolynomialFunction);
+            return FeatureManager.IsEnabled(FeaturesList.FunctionsFactory) ? FormatAsString() : nameof(PolynomialFunction);
         }
 
         public object Clone()

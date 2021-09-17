@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APB97.Features;
+using System;
 using System.Globalization;
 
 namespace APB97.Math
@@ -16,6 +17,8 @@ namespace APB97.Math
                     logarithmBase = value;
             }
         }
+
+        public LogarithmicFunction() => LogarithmBase = 2;
 
         public LogarithmicFunction(float logarithmBase)
         {
@@ -36,7 +39,7 @@ namespace APB97.Math
 
         public override string ToString()
         {
-            return nameof(LogarithmicFunction);
+            return FeatureManager.IsEnabled(FeaturesList.FunctionsFactory) ? FormatAsString() : nameof(LogarithmicFunction);
         }
 
         public object Clone()
@@ -54,7 +57,7 @@ namespace APB97.Math
 
         public string FormatAsString()
         {
-            return $"log_{logarithmBase}(x)";
+            return $"log_{logarithmBase.ToString(CultureInfo.InvariantCulture)}(x)";
         }
     }
 }
