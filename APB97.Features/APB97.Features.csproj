@@ -4,8 +4,4 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\APB97.Features\APB97.Features.csproj" />
-  </ItemGroup>
-
 </Project>

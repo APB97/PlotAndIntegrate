@@ -1,4 +1,6 @@
-﻿namespace APB97.Math
+﻿using System.Globalization;
+
+namespace APB97.Math
 {
     public static class FunctionFormatter
     {
@@ -18,8 +20,8 @@
             if (coefficient == 0f)
                 return "0";
             if (power != highestPower && coefficient > 0f)
-                return $"+{coefficient}{FormatPowerOf(letter, power)}";
-            return $"{coefficient}{FormatPowerOf(letter, power)}";
+                return $"+{coefficient.ToString(CultureInfo.InvariantCulture)}{FormatPowerOf(letter, power)}";
+            return $"{coefficient.ToString(CultureInfo.InvariantCulture)}{FormatPowerOf(letter, power)}";
         }
     }
 }
