@@ -30,6 +30,7 @@ Currently there are only logarithmic and polynomial functions.
 Users can see the function's formula directly under this button.
 
 Dialog for picking a function looks like this:
+
 ![Function picker](images/pick-a-function.png)
 
 Another option available is calculating the definite integral for a given range.
