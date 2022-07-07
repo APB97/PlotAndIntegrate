@@ -13,7 +13,7 @@ You can simply download the file, unpack it somewhere and use the `PlotAndIntegr
 
 # Option 2
 
-After cloning the project or dowloading and unpacking zip file with source, you can compile the solution with your IDE (I used Visual Studio 2019 for this project).
+After cloning the project or downloading and unpacking zip file with source, you can compile the solution with your IDE (I used Visual Studio 2019 for this project).
 Resulting files will appear in `PlotAndIntegrate\bin\` directory.
 
 # Usage
